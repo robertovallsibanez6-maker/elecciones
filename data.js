@@ -10,7 +10,7 @@ window.DATA = {
       id: "pp", name: "PP", full: "Partido Popular", color: "#1F6FC5", ink: "#fff",
       leader: "Alberto Núñez Feijóo", leaderRole: "Candidato a la Presidencia · cabeza de lista por Madrid",
       bcn: "Xavier García Albiol", motto: "La Reconstrucción Nacional (título del programa)",
-      ideology: "Centroderecha · conservador y liberal",
+      ideology: "Centroderecha. Conservador y liberal",
       seats2023: 137, vote2023: 33.1, pollVote: 30.9, pollSeats: 128, range: [98, 139],
       intro: [
         "Fundado en 1989 como refundación de Alianza Popular, es el gran partido de centroderecha de España. Gobernó con Aznar (1996–2004) y Rajoy (2011–2018), hasta que una moción de censura dio el Gobierno a Pedro Sánchez.",
@@ -37,7 +37,7 @@ window.DATA = {
       id: "psoe", name: "PSOE", full: "Partido Socialista Obrero Español (PSC en Cataluña)", color: "#E30613", ink: "#fff",
       leader: "Pedro Sánchez", leaderRole: "Presidente del Gobierno · candidato a la reelección",
       bcn: "Jordi Hereu (PSC)", motto: "La fuerza de seguir avanzando",
-      ideology: "Centroizquierda · socialdemócrata",
+      ideology: "Centroizquierda. Socialdemócrata",
       seats2023: 121, vote2023: 31.7, pollVote: 28.2, pollSeats: 112, range: [96, 143],
       intro: [
         "Fundado en 1879, es el partido más antiguo de España. Ha gobernado con González, Zapatero y, desde 2018, con Pedro Sánchez, que llegó al poder con una moción de censura contra Rajoy.",
@@ -64,7 +64,7 @@ window.DATA = {
       id: "vox", name: "Vox", full: "Vox", color: "#58AD2E", ink: "#fff",
       leader: "Santiago Abascal", leaderRole: "Candidato a la Presidencia (cuarta vez)",
       bcn: "Juan José Aizcorbe", motto: "Es sentido común",
-      ideology: "Derecha nacional-conservadora · muchos medios y politólogos la sitúan en la derecha radical o extrema derecha",
+      ideology: "Derecha nacional-conservadora. Muchos medios y politólogos la sitúan en la derecha radical o extrema derecha",
       seats2023: 33, vote2023: 12.4, pollVote: 18.6, pollSeats: 65, range: [47, 80],
       intro: [
         "Fundado en 2013 por exmiembros del PP; Abascal lo preside desde 2014. Entró en el Congreso en 2019 y su mejor resultado fueron 52 escaños (noviembre de 2019). En 2023 bajó a 33.",
@@ -91,7 +91,7 @@ window.DATA = {
       id: "fa", name: "Frente Amplio", full: "Frente Amplio (Front Ampli en Cataluña)", color: "#FF5A36", ink: "#fff", accent: "#C6E33B",
       leader: "Ada Colau", leaderRole: "Candidata a la Presidencia · cabeza de lista por Barcelona",
       bcn: "Ada Colau (nº 2: Ernest Urtasun)", motto: "Un voto como una casa",
-      ideology: "Izquierda · ecologista y federalista",
+      ideology: "Izquierda. Ecologista y federalista",
       seats2023: 31, vote2023: 12.3, pollVote: 6.0, pollSeats: 13, range: [7, 25],
       seatsNote: "En 2023 se presentó como Sumar (31 escaños, incluidos 5 de Podemos).",
       intro: [
@@ -119,7 +119,7 @@ window.DATA = {
       id: "erc", name: "ERC", full: "Esquerra Republicana de Catalunya", color: "#F5A800", ink: "#15192A",
       leader: "Gabriel Rufián", leaderRole: "Cabeza de lista por Barcelona",
       bcn: "Gabriel Rufián (Oriol Junqueras, nº 31)", motto: "Defender Cataluña, mejorar la vida, reforzar lo público (sus tres ejes)",
-      ideology: "Izquierda · independentista catalana",
+      ideology: "Izquierda. Independentista catalana",
       seats2023: 7, vote2023: 1.9, pollVote: 2.6, pollSeats: 10, range: null,
       catOnly: true,
       intro: [
@@ -147,7 +147,7 @@ window.DATA = {
       id: "junts", name: "Junts", full: "Junts per Catalunya", color: "#16B9A8", ink: "#15192A",
       leader: "Míriam Nogueras", leaderRole: "Cabeza de lista por Barcelona · portavoz en el Congreso",
       bcn: "Míriam Nogueras", motto: "Catalunya al centre",
-      ideology: "Centroderecha · independentista catalán",
+      ideology: "Centroderecha. Independentista catalán",
       seats2023: 7, vote2023: 1.6, pollVote: 1.4, pollSeats: 5, range: null,
       catOnly: true,
       intro: [

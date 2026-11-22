@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Elecciones 29N</title>
 <meta name="description" content="Guía de las elecciones generales del 29 de noviembre de 2026: partidos, propuestas, encuestas, pactos y cómo votar.">
-<meta name="theme-color" content="#F5F6F8">
+<meta name="theme-color" content="#E3E5E8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -13,357 +13,102 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
-<style>
-:root{
-  --paper:#F5F6F8; --card:#FFFFFF; --ink:#15192A; --ink2:#545B6B; --ink3:#8A90A0;
-  --rule:#DADDE4; --senado:#E9DFC9;
-  --r-lg:20px; --r-md:12px; --r-sm:8px;
-  --safe-b:env(safe-area-inset-bottom,0px); --safe-t:env(safe-area-inset-top,0px);
-  --cond:"wdth" 72; --wide:"wdth" 112;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;background:var(--paper)}
-body{font-family:"Archivo",system-ui,-apple-system,sans-serif;font-variation-settings:"wdth" 100;color:var(--ink);background:var(--paper);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:calc(76px + var(--safe-b))}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--ink);outline-offset:2px;border-radius:6px}
-.num{font-variant-numeric:tabular-nums}
-
-/* Header */
-.top{position:sticky;top:0;z-index:20;background:rgba(245,246,248,.92);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);padding:calc(10px + var(--safe-t)) 20px 10px;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid transparent;transition:border-color .2s}
-.top.scrolled{border-bottom-color:var(--rule)}
-.brand{font-weight:800;font-variation-settings:var(--cond);font-size:20px;letter-spacing:-.01em}
-.brand b{display:inline-block;background:var(--ink);color:var(--paper);padding:0 6px;border-radius:5px;margin-right:6px}
-.stamp{font-size:12px;color:var(--ink3);white-space:nowrap}
-
-main{max-width:640px;margin:0 auto;padding:0 20px}
-.screen{display:none}
-.screen.on{display:block}
-h1,h2,h3{font-variation-settings:var(--cond);letter-spacing:-.015em;line-height:1.05}
-h1{font-size:44px;font-weight:850}
-h2{font-size:30px;font-weight:800;margin:44px 0 12px}
-h3{font-size:21px;font-weight:750;margin:0 0 6px}
-p{max-width:62ch}
-.lede{font-size:18px;color:var(--ink2);margin-top:10px}
-.muted{color:var(--ink2)}
-.small{font-size:13px;color:var(--ink3);line-height:1.45}
-.block{background:var(--card);border-radius:var(--r-lg);padding:20px;margin:14px 0}
-.block p+p{margin-top:10px}
-
-/* Hero */
-.hero{padding-top:14px}
-.count{display:flex;align-items:flex-end;gap:14px;margin:6px 0 2px}
-.count .big{font-size:96px;line-height:.82;font-weight:900;font-variation-settings:"wdth" 62;letter-spacing:-.03em}
-.count .lbl{font-size:17px;line-height:1.2;padding-bottom:4px;color:var(--ink2)}
-.count .lbl strong{color:var(--ink);display:block;font-size:19px}
-.hemi-wrap{position:relative;margin:18px -6px 0}
-.hemi{width:100%;height:auto;display:block;overflow:visible}
-.hemi circle{transition:fill .5s ease}
-.hemi-center{position:absolute;left:0;right:0;bottom:0;text-align:center;pointer-events:none}
-.hemi-center .n{font-size:40px;font-weight:900;font-variation-settings:"wdth" 70;line-height:1}
-.hemi-cap{text-align:center;font-size:13px;color:var(--ink2);margin-top:4px}
-.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:14px}
-.legend span{display:inline-flex;align-items:center;gap:6px}
-.legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
-.legend b{font-variant-numeric:tabular-nums}
-.seg{display:inline-flex;background:#E7E9EE;border-radius:999px;padding:3px;margin-top:6px}
-.seg button{padding:7px 14px;border-radius:999px;font-size:14px;font-weight:600;color:var(--ink2)}
-.seg button[aria-pressed=true]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(21,25,42,.12)}
-
-/* Key list */
-.keys{list-style:none;display:grid;gap:10px;margin-top:12px}
-.keys li{background:var(--card);border-radius:var(--r-md);padding:14px 16px}
-.keys li strong{display:block;font-variation-settings:var(--cond);font-size:18px;line-height:1.15;margin-bottom:3px}
-
-/* Timeline (a real sequence) */
-.tl{list-style:none;margin-top:10px;position:relative}
-.tl li{display:grid;grid-template-columns:74px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--rule)}
-.tl li:first-child{border-top:0}
-.tl .d{font-weight:800;font-variation-settings:var(--cond);font-size:17px}
-.tl li.now .d::after{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ink);margin-left:6px;vertical-align:middle}
-.tl li.past{color:var(--ink3)}
-
-/* Party grid */
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.pcard{position:relative;text-align:left;background:var(--card);border-radius:var(--r-lg);padding:14px 14px 12px;overflow:hidden;min-height:168px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--rule)}
-.pcard .bar{position:absolute;left:0;top:0;right:0;height:6px}
-.pcard .nm{font-size:30px;font-weight:900;font-variation-settings:"wdth" 66;line-height:.95;margin-top:8px;letter-spacing:-.02em}
-.pcard .ld{font-size:14px;color:var(--ink2);margin-top:4px;line-height:1.25}
-.pcard .st{display:flex;align-items:baseline;gap:6px;margin-top:10px}
-.pcard .st .s{font-size:26px;font-weight:850;font-variation-settings:var(--cond);font-variant-numeric:tabular-nums}
-.pcard .st .w{font-size:12.5px;color:var(--ink2);line-height:1.2}
-.pcard .tag{display:block;font-size:11.5px;color:var(--ink2);margin-top:2px;line-height:1.2}
-.pcard.wide{grid-column:span 2;min-height:auto}
-
-/* Sheet */
-.sheet{position:fixed;inset:0;z-index:50;background:var(--paper);overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateY(100%);transition:transform .38s cubic-bezier(.2,.8,.2,1);visibility:hidden}
-.sheet.open{transform:none;visibility:visible}
-.sheet-head{padding:calc(18px + var(--safe-t)) 20px 26px;color:#fff;position:relative}
-.sheet-head .close{position:absolute;right:14px;top:calc(12px + var(--safe-t));width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:22px;line-height:1}
-.sheet-head .nm{font-size:64px;font-weight:900;font-variation-settings:"wdth" 62;line-height:.9;letter-spacing:-.03em;margin-top:34px;max-width:12ch}
-.sheet-head .full{font-size:14px;opacity:.85;margin-top:6px}
-.sheet-head .who{margin-top:18px;font-size:22px;font-weight:750;font-variation-settings:var(--cond)}
-.sheet-head .role{font-size:14px;opacity:.85}
-.sheet-head .motto{margin-top:14px;font-style:italic;font-size:16px;opacity:.95}
-.sheet-body{max-width:640px;margin:0 auto;padding:0 20px 60px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--card);border-radius:var(--r-lg);margin-top:-14px;position:relative;padding:14px 6px}
-.stats>div{text-align:center;padding:0 4px}
-.stats>div+div{border-left:1px solid var(--rule)}
-.stats .v{font-size:28px;font-weight:850;font-variation-settings:var(--cond);font-variant-numeric:tabular-nums;line-height:1.05}
-.stats .k{font-size:12px;color:var(--ink2);line-height:1.25}
-.chip{display:inline-block;font-size:12.5px;padding:5px 11px;border-radius:12px;background:var(--card);border:1px solid var(--rule);margin:14px 6px 0 0}
-.props{list-style:none;margin-top:6px}
-.props li{background:var(--card);border-radius:var(--r-md);padding:15px 16px 15px 18px;margin-top:10px;position:relative}
-.props li::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:var(--pc)}
-.props strong{display:block;font-size:17px;font-variation-settings:var(--cond);font-weight:750;line-height:1.2;margin-bottom:4px}
-.props span{color:var(--ink2);font-size:15.5px}
-.links{list-style:none;margin-top:8px}
-.links li{padding:10px 0;border-top:1px solid var(--rule)}
-.links a{font-weight:600;text-decoration-thickness:1px;text-underline-offset:3px}
-
-/* Charts */
-.vbars{margin-top:10px}
-.vrow{display:grid;grid-template-columns:96px 1fr 50px;align-items:center;gap:10px;padding:7px 0}
-.vrow .pn{font-weight:750;font-variation-settings:var(--cond);font-size:17px;line-height:1.1}
-.vrow .track{position:relative;height:20px;background:#ECEEF2;border-radius:5px}
-.vrow .fill{position:absolute;left:0;top:0;bottom:0;border-radius:5px}
-.vrow .tick{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);border-radius:2px}
-.vrow .pv{text-align:right;font-weight:750;font-variant-numeric:tabular-nums}
-.keyline{display:flex;gap:16px;font-size:12.5px;color:var(--ink2);margin-top:6px;align-items:center;flex-wrap:wrap}
-.keyline i{display:inline-block;vertical-align:middle;margin-right:5px}
-
-.strip{margin-top:12px}
-.srow{display:grid;grid-template-columns:108px 1fr 40px;gap:8px;align-items:center;padding:4px 0;font-size:13.5px}
-.srow .lab{line-height:1.15}
-.srow .lab small{display:block;color:var(--ink3);font-size:11.5px}
-.srow .tr{position:relative;height:16px}
-.srow .seg2{position:absolute;top:2px;height:12px;border-radius:3px}
-.srow .val{text-align:right;font-weight:750;font-variant-numeric:tabular-nums}
-.srow.below .val{color:var(--ink2)}
-.majline{position:absolute;top:-6px;bottom:-6px;width:0;border-left:2px dashed var(--ink)}
-.strip-axis{display:grid;grid-template-columns:108px 1fr 40px;gap:8px;font-size:11.5px;color:var(--ink3)}
-.strip-axis .ax{position:relative;height:16px}
-.strip-axis .ax span{position:absolute;transform:translateX(-50%)}
-
-.ranges{margin-top:10px}
-.rrow{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center;padding:8px 0}
-.rrow .tr{position:relative;height:22px}
-.rrow .rg{position:absolute;top:7px;height:8px;border-radius:4px;opacity:.35}
-.rrow .mid{position:absolute;top:2px;width:18px;height:18px;border-radius:50%;transform:translateX(-50%);border:3px solid var(--card)}
-.rrow .ends{position:absolute;top:-2px;font-size:11.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
-
-.tablewrap{overflow-x:auto;margin:12px -20px 0;padding:0 20px;-webkit-overflow-scrolling:touch}
-table{border-collapse:collapse;font-size:14px;min-width:560px;width:100%;background:var(--card);border-radius:var(--r-md);overflow:hidden}
-th,td{padding:9px 8px;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--card)}
-thead th{font-size:12px;color:var(--ink2);font-weight:600;border-bottom:1px solid var(--rule)}
-tbody tr+tr td{border-top:1px solid #EEF0F3}
-td .m{display:block;font-size:11.5px;color:var(--ink3)}
-td.lead{font-weight:800}
-.dotc{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
-
-/* Probabilities */
-.prob{display:grid;gap:10px;margin-top:12px}
-.prow{background:var(--card);border-radius:var(--r-md);padding:14px 16px}
-.prow .q{font-weight:700;font-size:16px;line-height:1.25}
-.prow .pb{height:10px;background:#ECEEF2;border-radius:5px;margin:10px 0 6px;overflow:hidden}
-.prow .pb i{display:block;height:100%;border-radius:5px}
-.prow .pv{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.prow .pv b{font-size:24px;font-variation-settings:var(--cond);font-weight:850}
-
-/* Pacts */
-.pchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.pchip{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;background:var(--card);border:1.5px solid var(--rule);font-size:14.5px;font-weight:600}
-.pchip i{width:12px;height:12px;border-radius:50%}
-.pchip b{font-variant-numeric:tabular-nums;color:var(--ink2);font-weight:600}
-.pchip[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
-.pchip[aria-pressed=true] b{color:#C9CCD6}
-.psum{background:var(--card);border-radius:var(--r-lg);padding:18px;margin-top:14px}
-.psum .row{display:flex;align-items:baseline;justify-content:space-between}
-.psum .tot{font-size:52px;font-weight:900;font-variation-settings:"wdth" 64;line-height:1}
-.psum .msg{font-weight:700;font-size:16px;text-align:right;max-width:60%}
-.pbar{position:relative;height:18px;background:#ECEEF2;border-radius:6px;margin-top:14px;display:flex;overflow:hidden}
-.pbar i{height:100%;transition:width .35s ease}
-.pmaj{position:relative;height:18px;margin-top:2px}
-.pmaj span{position:absolute;left:50.28%;transform:translateX(-50%);font-size:11.5px;color:var(--ink2)}
-.pmaj::before{content:"";position:absolute;left:50.28%;top:-22px;height:22px;border-left:2px dashed var(--ink)}
-.scen{list-style:none;display:grid;gap:10px;margin-top:12px}
-.scen li{background:var(--card);border-radius:var(--r-md);padding:16px}
-.scen .sh{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.scen .sh strong{font-size:18px;font-variation-settings:var(--cond);line-height:1.15}
-.scen .seats{font-weight:850;font-variation-settings:var(--cond);font-size:22px;white-space:nowrap}
-.scen .lk{display:inline-block;font-size:12.5px;font-weight:700;padding:3px 9px;border-radius:999px;margin:8px 0 6px}
-.lk-hi{background:var(--ink);color:#fff}
-.lk-mid{background:#D4D7DF;color:var(--ink)}
-.lk-lo{border:1.5px solid var(--ink3);color:var(--ink2)}
-.scen p{font-size:15px;color:var(--ink2)}
-.minibar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin-top:10px;background:#ECEEF2}
-.exp{display:grid;gap:10px;margin-top:12px}
-.exp > div{background:var(--card);border-radius:var(--r-md);padding:16px}
-.exp ul{padding-left:18px;margin-top:6px}
-.exp li{margin-top:5px;font-size:15.5px}
-
-/* Topics */
-.tabs-h{display:flex;gap:8px;overflow-x:auto;margin:16px -20px 0;padding:2px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.tabs-h::-webkit-scrollbar{display:none}
-.tchip{flex:none;padding:9px 14px;border-radius:999px;background:var(--card);border:1.5px solid var(--rule);font-weight:650;font-size:15px;white-space:nowrap}
-.tchip[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
-.tq{font-size:25px;font-weight:800;font-variation-settings:var(--cond);line-height:1.1;margin:26px 0 4px}
-.grid-ans{display:grid;gap:6px;margin-top:12px}
-.arow{display:grid;grid-template-columns:124px 1fr;align-items:center;gap:10px;background:var(--card);border-radius:var(--r-sm);padding:8px 10px 8px 0;overflow:hidden}
-.arow .pp{display:flex;align-items:center;gap:8px;font-weight:750;font-variation-settings:var(--cond);font-size:17px;padding-left:0}
-.arow .pp i{width:6px;align-self:stretch;min-height:28px;border-radius:0 3px 3px 0}
-.ans{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;line-height:1.2}
-.ans .mk{flex:none;width:44px;text-align:center;font-size:12.5px;font-weight:800;padding:3px 0;border-radius:6px}
-.mk.si{background:var(--ink);color:#fff}
-.mk.no{border:1.5px solid var(--ink);color:var(--ink)}
-.mk.mix{background:linear-gradient(90deg,var(--ink) 50%,transparent 50%);border:1.5px solid var(--ink);color:#fff;text-shadow:0 0 2px var(--ink)}
-.mk.nd{border:1.5px dashed var(--ink3);color:var(--ink3)}
-.mk.txt{display:none}
-.stances{list-style:none;margin-top:16px}
-.stances li{background:var(--card);border-radius:var(--r-md);margin-top:10px;padding:14px 16px;border-left:6px solid var(--pc)}
-.stances strong{font-variation-settings:var(--cond);font-size:18px;font-weight:800}
-.stances p{font-size:15.5px;color:var(--ink2);margin-top:3px}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-select{font:inherit;font-weight:650;padding:10px 34px 10px 12px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2315192A' stroke-width='2'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 12px center!important;border-radius:var(--r-sm);border:1.5px solid var(--rule);background:var(--card);width:100%;color:var(--ink);-webkit-appearance:none;appearance:none}
-.cmp-row{margin-top:18px}
-.cmp-row h3{font-size:18px}
-.cmp-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
-.cmp-cols div{background:var(--card);border-radius:var(--r-sm);padding:10px 11px;font-size:14px;color:var(--ink2);border-top:5px solid var(--pc)}
-
-/* Ballots */
-.ballots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.ballot{border-radius:6px;padding:14px 12px;min-height:150px;box-shadow:0 1px 0 var(--rule),0 0 0 1px var(--rule) inset;display:flex;flex-direction:column;justify-content:space-between}
-.ballot.c{background:#fff}
-.ballot.s{background:var(--senado)}
-.ballot strong{font-variation-settings:var(--cond);font-size:20px}
-.ballot .l{height:5px;background:rgba(21,25,42,.14);border-radius:2px;margin-top:6px}
-.ballot .l.x{width:70%}
-.ballot .bx{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:11px}
-.ballot .bx i{width:12px;height:12px;border:1.5px solid var(--ink);border-radius:2px;display:inline-grid;place-items:center;font-style:normal;font-size:10px;line-height:1}
-.steps{list-style:none;counter-reset:s;margin-top:10px}
-.steps li{counter-increment:s;position:relative;padding:12px 0 12px 44px;border-top:1px solid var(--rule)}
-.steps li:first-child{border-top:0}
-.steps li::before{content:counter(s);position:absolute;left:0;top:12px;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;display:grid;place-items:center;font-size:15px}
-.steps strong{display:block}
-.heads{list-style:none;margin-top:8px}
-.heads li{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--rule)}
-.heads li:first-child{border-top:0}
-.heads i{width:12px;height:12px;border-radius:50%}
-.heads span{color:var(--ink2);font-size:14px;text-align:right}
-
-/* Nav */
-nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 4px calc(6px + var(--safe-b))}
-nav.tabs button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;font-size:11.5px;font-weight:600;color:var(--ink3)}
-nav.tabs svg{width:25px;height:25px}
-nav.tabs button[aria-current=page]{color:var(--ink)}
-.foot{margin:40px 0 20px;font-size:13px;color:var(--ink3)}
-
-@media (min-width:700px){ .pgrid{grid-template-columns:1fr 1fr 1fr} h1{font-size:56px} }
-@media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important} }
-</style>
+<link rel="preload" href="fonts/anybody.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="top" id="top">
-  <div class="brand"><b>29N</b>Elecciones</div>
-  <div class="stamp" id="stamp"></div>
+  <div class="mark"><span class="mark-n">29N</span><span class="mark-t">elecciones<br>generales</span></div>
+  <div class="sello" id="stamp">datos del 22-N</div>
 </header>
 
 <main>
 <!-- INICIO -->
 <section class="screen on" id="s-inicio" aria-label="Inicio">
-  <div class="hero">
-    <div class="count"><div class="big num" id="cd-n">7</div><div class="lbl" id="cd-l"><strong>días</strong>para votar el domingo 29 de noviembre</div></div>
-    <div class="hemi-wrap">
-      <svg class="hemi" id="hemi-home" viewBox="0 0 400 214" role="img" aria-label="Hemiciclo del Congreso según la media de encuestas"></svg>
-      <div class="hemi-center"><div class="n num">350</div></div>
-    </div>
-    <div class="hemi-cap">diputados, mayoría absoluta en 176</div>
-    <p class="small" style="margin-top:8px">Así quedaría el Congreso con la media de las encuestas publicadas hasta el 22 de noviembre.</p>
-    <div class="legend" id="legend-home"></div>
+  <div class="count" id="count">
+    <div class="palotes" id="palotes" aria-hidden="true"></div>
+    <div class="count-t" id="count-t">quedan <b>7 días</b> para votar, el domingo 29 de noviembre</div>
   </div>
+  <div class="hemi-wrap">
+    <svg class="hemi" id="hemi-home" viewBox="0 0 400 214" role="img" aria-label="Hemiciclo del Congreso según la media de encuestas"></svg>
+    <div class="hemi-n num">350</div>
+  </div>
+  <p class="cap">Así quedaría el Congreso con la media de encuestas. La marca de arriba señala el escaño 176, la mayoría absoluta.</p>
+  <div class="legend" id="legend-home"></div>
 
   <h2>Por qué votamos ahora</h2>
-  <div class="block">
-    <p>La legislatura podía durar hasta 2027, pero el 2 de octubre el Congreso tumbó los dos decretos de vivienda del Gobierno (prórroga de alquileres, límites a las rentas, freno a desahucios) con los votos de PP, Vox, Junts y UPN.</p>
-    <p>El 5 de octubre Pedro Sánchez disolvió las Cortes y convocó elecciones anticipadas, pidiendo más fuerza en el Parlamento para sacar adelante su agenda.</p>
-  </div>
+  <p>La legislatura podía durar hasta 2027, pero el 2 de octubre el Congreso tumbó los dos decretos de vivienda del Gobierno (prórroga de alquileres, límites a las rentas, freno a desahucios) con los votos de PP, Vox, Junts y UPN.</p>
+  <p>El 5 de octubre Pedro Sánchez disolvió las Cortes y convocó elecciones anticipadas, pidiendo más fuerza en el Parlamento para sacar adelante su agenda.</p>
 
   <h2>Lo que marca la campaña</h2>
-  <ul class="keys">
-    <li><strong>La vivienda, primera preocupación</strong>El 55% de los españoles la sitúa entre los dos mayores problemas del país (GAD3, 9 de noviembre). Hubo una huelga general por este motivo en plena precampaña.</li>
-    <li><strong>La crisis de Ceuta</strong>El 30 de julio decenas de miles de personas entraron en Ceuta desde Marruecos. La oposición acusa al Gobierno de mala gestión y la inmigración ha ganado peso en la campaña.</li>
-    <li><strong>Vox, en máximos</strong>Las encuestas le dan unos 65 escaños, el doble que en 2023. Sería imprescindible para un Gobierno del PP.</li>
-    <li><strong>La izquierda, dividida</strong>Frente Amplio (heredero de Sumar) y Podemos van por separado. Podemos se ha aliado con ERC y no se presenta en Cataluña.</li>
-  </ul>
+  <div class="recortes">
+    <article><h3>La vivienda, primera preocupación</h3><p>El 55% de los españoles la sitúa entre los dos mayores problemas del país (GAD3, 9 de noviembre). Hubo una huelga general por este motivo en plena precampaña.</p></article>
+    <article><h3>La crisis de Ceuta</h3><p>El 30 de julio decenas de miles de personas entraron en Ceuta desde Marruecos. La oposición acusa al Gobierno de mala gestión y la inmigración ha ganado peso en la campaña.</p></article>
+    <article><h3>Vox, en máximos</h3><p>Las encuestas le dan unos 65 escaños, el doble que en 2023. Sería imprescindible para un Gobierno del PP.</p></article>
+    <article><h3>La izquierda, dividida</h3><p>Frente Amplio (heredero de Sumar) y Podemos van por separado. Podemos se ha aliado con ERC y no se presenta en Cataluña.</p></article>
+  </div>
 
   <h2>Cómo se forma Gobierno</h2>
-  <div class="block">
-    <p><strong>Se eligen 350 diputados</strong> en 52 circunscripciones (una por provincia, más Ceuta y Melilla) con el sistema D'Hondt. Barcelona reparte 32.</p>
-    <p><strong>Investidura.</strong> El candidato a presidente necesita 176 votos a favor en la primera votación. Si no los logra, en la segunda le basta con tener más «sí» que «no»: por eso una abstención puede ser decisiva.</p>
-    <p><strong>También se vota el Senado</strong>: 208 senadores elegidos directamente, con una papeleta aparte.</p>
-  </div>
+  <p><b>Se eligen 350 diputados</b> en 52 circunscripciones (una por provincia, más Ceuta y Melilla) con el sistema D'Hondt. Barcelona reparte 32.</p>
+  <p><b>Investidura.</b> El candidato a presidente necesita 176 votos a favor en la primera votación. Si no los logra, en la segunda le basta con tener más «sí» que «no»: por eso una abstención puede ser decisiva.</p>
+  <p>Qué vota cada papeleta y cómo cuenta tu voto: <button class="inline-link" data-go="voto">ver Tu voto</button>.</p>
 
   <h2>Calendario</h2>
   <ol class="tl" id="timeline"></ol>
-  <p class="foot">Información objetiva a partir de los programas electorales, fuentes oficiales y las encuestas publicadas. Los partidos aparecen ordenados por los escaños que lograron en 2023. Fuentes en la pestaña Votar.</p>
+  <p class="foot">Información a partir de los programas electorales, fuentes oficiales y las encuestas publicadas. Los partidos aparecen ordenados por los escaños que lograron en 2023. Fuentes al final de Tu voto.</p>
 </section>
 
 <!-- PARTIDOS -->
 <section class="screen" id="s-partidos" aria-label="Partidos">
-  <h1 style="margin-top:14px">Los partidos</h1>
-  <p class="lede">Los que puedes votar en Cataluña y los de ámbito estatal con opciones. Toca uno para ver quién es y qué propone.</p>
+  <h1>Las papeletas</h1>
+  <p class="lede">Los partidos que puedes votar en Cataluña y los de ámbito estatal con opciones. Toca una papeleta para ver quién es y qué propone.</p>
   <div class="pgrid" id="pgrid"></div>
-  <p class="small" style="margin-top:16px">Escaños: media de las encuestas (Mapa Electoral). Otros partidos que no se votan en Cataluña, como PNV, EH Bildu o BNG, aparecen en el hemiciclo de Encuestas porque cuentan para los pactos.</p>
+  <p class="small">Escaños: media de las encuestas (Mapa Electoral). PNV, EH Bildu o BNG no se votan en Cataluña, pero aparecen en el hemiciclo de Encuestas porque cuentan para los pactos.</p>
 </section>
 
 <!-- ENCUESTAS -->
 <section class="screen" id="s-encuestas" aria-label="Encuestas y pactos">
-  <h1 style="margin-top:14px">Encuestas y pactos</h1>
+  <h1>Encuestas y pactos</h1>
   <p class="lede">Las últimas: desde el 24 de noviembre está prohibido publicar sondeos nuevos.</p>
 
-  <div class="seg" role="group" aria-label="Qué Congreso mostrar">
-    <button aria-pressed="true" data-hm="polls">Media encuestas</button>
+  <div class="switch" role="group" aria-label="Qué Congreso mostrar">
+    <button aria-pressed="true" data-hm="polls">Media de encuestas</button>
     <button aria-pressed="false" data-hm="r2023">Resultado 2023</button>
   </div>
   <div class="hemi-wrap">
     <svg class="hemi" id="hemi-polls" viewBox="0 0 400 214" role="img" aria-label="Hemiciclo"></svg>
-    <div class="hemi-center"><div class="n num">176</div></div>
+    <div class="hemi-n num">176</div>
   </div>
-  <div class="hemi-cap">escaños para la mayoría absoluta (línea discontinua)</div>
+  <p class="cap">escaños para la mayoría absoluta</p>
   <div class="legend" id="legend-polls"></div>
 
   <h2>Voto estimado</h2>
-  <p class="muted">Media de 20 encuestadoras (Demócrata, 22 nov). La raya negra marca el resultado de 2023.</p>
+  <p class="muted">Media de 20 encuestadoras (Demócrata, 22 de noviembre). La raya vertical es el resultado de 2023.</p>
   <div class="vbars" id="vbars"></div>
-  <div class="keyline"><span><i style="width:16px;height:10px;background:#9aa;border-radius:3px"></i>Encuestas 2026</span><span><i style="width:2px;height:14px;background:var(--ink)"></i>Elecciones 2023</span></div>
 
   <h2>¿Suman PP y Vox?</h2>
-  <p class="muted">Escaños de PP + Vox en cada encuesta que publica reparto. La línea discontinua es la mayoría absoluta (176).</p>
+  <p class="muted">Escaños de PP más Vox en cada encuesta que publica reparto, frente a la línea de 176.</p>
   <div class="strip" id="strip"></div>
 
   <h2>Horquillas</h2>
-  <p class="muted">Mínimo y máximo de escaños entre todas las encuestadoras, con la media en el punto.</p>
+  <p class="muted">Del mínimo al máximo de escaños entre encuestadoras. El punto es la media.</p>
   <div class="ranges" id="ranges"></div>
 
   <h2>Probabilidades</h2>
-  <p class="muted">Ninguna encuesta es un resultado. Estos indicadores resumen lo que dicen los sondeos, los modelos y los mercados.</p>
+  <p class="muted">Ninguna encuesta es un resultado. Esto resume lo que dicen sondeos, modelos y mercados.</p>
   <div class="prob" id="prob"></div>
 
   <h2>Calcula tu pacto</h2>
   <p class="muted">Toca partidos para sumar sus escaños según la media de encuestas.</p>
   <div class="pchips" id="pchips"></div>
   <div class="psum">
-    <div class="row"><div class="tot num" id="psum-n">0</div><div class="msg" id="psum-m">Elige partidos</div></div>
+    <div class="psum-row"><div class="psum-n num" id="psum-n">0</div><div class="psum-m" id="psum-m">Elige partidos</div></div>
     <div class="pbar" id="pbar"></div>
     <div class="pmaj"><span>176</span></div>
   </div>
 
   <h2>Escenarios de Gobierno</h2>
-  <ul class="scen" id="scen"></ul>
+  <div class="scen" id="scen"></div>
 
   <h2>Qué se espera</h2>
   <div class="exp">
@@ -376,7 +121,7 @@ nav.tabs button[aria-current=page]{color:var(--ink)}
     <div><h3>Lo que no se espera</h3><ul>
       <li>Una mayoría de los partidos de izquierda y nacionalistas: la media les deja lejos de 176.</li>
       <li>Que PP o PSOE gobiernen solos con mayoría absoluta.</li>
-      <li>Que PP y Vox lleguen a 210 escaños, los tres quintos necesarios para reformar la Constitución: solo ocurre en el 6% de las simulaciones de Mapa Electoral.</li>
+      <li>Que PP y Vox lleguen a 210 escaños, los tres quintos necesarios para reformar la Constitución: solo pasa en el 6% de las simulaciones de Mapa Electoral.</li>
     </ul></div>
     <div><h3>Qué vigilar el domingo</h3><ul>
       <li>La participación y la movilización de cada bloque.</li>
@@ -386,23 +131,23 @@ nav.tabs button[aria-current=page]{color:var(--ink)}
     </ul></div>
   </div>
 
-  <h2>Todas las encuestas</h2>
+  <h2>El acta: todas las encuestas</h2>
   <p class="muted">Última encuesta de cada instituto. Desliza la tabla.</p>
   <div class="tablewrap"><table id="ptable"></table></div>
-  <p class="small" style="margin-top:10px">Escaños con decimales: punto medio de una horquilla. Sigma Dos, More in Common, Public First e InvyMark no publican escaños. Fuentes: Mapa Electoral y Demócrata.</p>
+  <p class="small">Escaños con decimales: punto medio de una horquilla. Sigma Dos, More in Common, Public First e InvyMark no publican escaños. Fuentes: Mapa Electoral y Demócrata.</p>
 </section>
 
 <!-- TEMAS -->
 <section class="screen" id="s-temas" aria-label="Temas">
-  <h1 style="margin-top:14px">Qué opina cada uno</h1>
+  <h1>Qué opina cada uno</h1>
   <p class="lede">Siete temas clave y la postura de cada partido, según sus programas.</p>
-  <div class="seg" role="group" aria-label="Modo">
+  <div class="switch" role="group" aria-label="Modo">
     <button aria-pressed="true" data-tm="temas">Por tema</button>
     <button aria-pressed="false" data-tm="cmp">Comparar dos</button>
   </div>
   <div id="tm-temas">
-    <div class="tabs-h" id="tchips" role="group" aria-label="Temas"></div>
-    <div id="topic"></div>
+    <div class="folder-tabs" id="tchips" role="group" aria-label="Temas"></div>
+    <div class="folder" id="topic"></div>
   </div>
   <div id="tm-cmp" hidden>
     <div class="cmp"><select id="cmpA" aria-label="Primer partido"></select><select id="cmpB" aria-label="Segundo partido"></select></div>
@@ -410,45 +155,86 @@ nav.tabs button[aria-current=page]{color:var(--ink)}
   </div>
 </section>
 
-<!-- VOTAR -->
-<section class="screen" id="s-votar" aria-label="Cómo votar">
-  <h1 style="margin-top:14px">Cómo votar</h1>
-  <p class="lede">Domingo 29 de noviembre, de 9:00 a 20:00. Pueden votar 38.728.356 personas.</p>
+<!-- TU VOTO -->
+<section class="screen" id="s-voto" aria-label="Tu voto">
+  <h1>Tu voto</h1>
+  <p class="lede">Domingo 29 de noviembre, de 9:00 a 20:00. Vas a meter dos papeletas en dos urnas, y no sirven para lo mismo.</p>
+
+  <div class="two-ballots">
+    <article class="ballot-card congreso">
+      <div class="bc-head"><span class="bc-k">Papeleta blanca</span><h3>Congreso</h3></div>
+      <p class="bc-how">Eliges una lista cerrada de un partido. No puedes tachar ni cambiar el orden.</p>
+      <h4>Para qué sirve</h4>
+      <ul>
+        <li>Elige al presidente del Gobierno en la investidura y puede echarlo con una moción de censura.</li>
+        <li>Aprueba las leyes y los Presupuestos y tiene la última palabra sobre ellos.</li>
+        <li>Controla al Gobierno cada semana.</li>
+      </ul>
+      <p class="bc-bcn">En Barcelona se reparten <b>32 diputados</b>.</p>
+    </article>
+    <article class="ballot-card senado">
+      <div class="bc-head"><span class="bc-k">Papeleta sepia</span><h3>Senado</h3></div>
+      <p class="bc-how">Votas a personas: marcas con una cruz hasta 3 nombres, aunque sean de partidos distintos.</p>
+      <h4>Para qué sirve</h4>
+      <ul>
+        <li>No vota la investidura. Puede enmendar o vetar leyes, pero el Congreso levanta el veto con mayoría absoluta, o con mayoría simple pasados dos meses.</li>
+        <li>Es imprescindible para reformar la Constitución (tres quintos en cada cámara) y para aprobar el artículo 155 (mayoría absoluta del Senado).</li>
+        <li>Nombra a 4 magistrados del Constitucional y a la mitad del CGPJ, con tres quintos.</li>
+      </ul>
+      <p class="bc-bcn">En Barcelona salen <b>4 senadores</b>.</p>
+    </article>
+  </div>
+  <p class="note">Además de los 208 senadores que se votan, los parlamentos autonómicos designan otros: uno por comunidad y uno más por cada millón de habitantes (Cataluña tiene 8). El PP tiene mayoría absoluta en el Senado desde 2023.</p>
+
+  <h2>Cómo se convierte tu voto en escaños</h2>
+  <p>El Congreso usa el sistema D'Hondt en cada provincia. Solo entran en el reparto las listas con al menos el 3% de los votos válidos de esa provincia, contando los votos en blanco.</p>
+  <p>En Barcelona, con 32 escaños, cada diputado cuesta en torno al 3% de los votos: casi cualquier partido que supere el listón saca algo. En provincias que eligen 2 o 3 diputados, como Soria o Teruel, un partido pequeño necesita muchísimo más.</p>
+
+  <div class="lab" id="lab">
+    <div class="lab-head"><h3>Simulador de Barcelona</h3><button class="btn-ghost" id="lab-reset">Volver a 2023</button></div>
+    <p class="small">Mueve los porcentajes y mira cómo cambia el reparto de los 32 escaños. Parte del resultado de 2023 (Vox y «otros», aproximados).</p>
+    <div class="lab-sliders" id="lab-sliders"></div>
+    <div class="lab-seats" id="lab-seats" aria-live="polite"></div>
+    <p class="lab-msg" id="lab-msg"></p>
+  </div>
+
+  <h2>Blanco, nulo o quedarse en casa</h2>
+  <div class="cmp3">
+    <div><h3>Voto en blanco</h3><p>Sobre sin papeleta. Cuenta como voto válido: sube un poco el listón del 3% y puede dejar fuera a un partido pequeño que esté justo en el límite. No da escaño a nadie.</p></div>
+    <div><h3>Voto nulo</h3><p>Papeleta tachada, rota, de otra elección o dos papeletas distintas en el sobre. Se cuenta como participación, pero no entra en el reparto.</p></div>
+    <div><h3>Abstención</h3><p>No cuenta en nada. El reparto se hace solo con quienes votan.</p></div>
+  </div>
+  <p class="note">Es un mito que el voto en blanco «vaya al partido más votado». No va a ningún partido.</p>
+
+  <h2>Estrategias que se suelen usar</h2>
+  <p class="muted">No son recomendaciones: es cómo funcionan las reglas.</p>
+  <div class="tips">
+    <article><h3>Voto útil</h3><p>Votar a un partido con opciones de escaño en tu provincia en vez de a tu primera preferencia. En Barcelona pesa menos que en provincias pequeñas, porque con un 3% ya se entra en el reparto.</p></article>
+    <article><h3>Voto dividido</h3><p>Puedes votar a un partido para el Congreso y a candidatos de otros para el Senado. Son urnas independientes.</p></article>
+    <article><h3>El Senado se decide por nombres</h3><p>Ganan los 4 candidatos con más cruces. Lo habitual es que el partido más votado se lleve 3 y el segundo 1: en Barcelona, en 2023, el PSC sacó 3 senadores y ERC 1.</p></article>
+    <article><h3>Marcar menos no concentra</h3><p>Cada cruz es un voto para esa persona. Marcar solo a un candidato no le da más peso: solo dejas sin usar tus otros dos votos.</p></article>
+    <article><h3>Pactos para el Senado</h3><p>Algunos partidos se retiran en ciertas provincias para no dividir votos: PP y Vox se reparten candidaturas en 23 provincias (en Girona y Tarragona solo va Vox), y Front Ampli no presenta senadores en Girona, Lleida y Tarragona por un acuerdo con el PSC.</p></article>
+  </div>
 
   <h2>El día de la votación</h2>
   <ol class="steps">
-    <li><strong>Busca tu colegio y tu mesa</strong>En la tarjeta censal que llega por correo, en tu ayuntamiento o en la web oficial 29neleccionesgenerales.es.</li>
-    <li><strong>Lleva tu documento original</strong>DNI, pasaporte o carnet de conducir, con foto. El resguardo del DNI en trámite no sirve.</li>
-    <li><strong>Coge las dos papeletas</strong>Una blanca para el Congreso y otra sepia para el Senado, cada una en su sobre.</li>
-    <li><strong>Vota en la mesa</strong>Entrega el documento, espera a que comprueben que estás en la lista y deposita cada sobre en su urna.</li>
+    <li><b>Busca tu colegio y tu mesa</b>En la tarjeta censal que llega por correo, en tu ayuntamiento o en la web oficial 29neleccionesgenerales.es.</li>
+    <li><b>Lleva tu documento original</b>DNI, pasaporte o carnet de conducir, con foto. El resguardo del DNI en trámite no sirve.</li>
+    <li><b>Coge las dos papeletas</b>Una blanca para el Congreso y otra sepia para el Senado, cada una en su sobre. Puedes llevarlas preparadas de casa.</li>
+    <li><b>Vota en la mesa</b>Entrega el documento, espera a que comprueben que estás en la lista y deposita cada sobre en su urna.</li>
   </ol>
-  <div class="ballots" aria-hidden="true">
-    <div class="ballot c"><div><strong>Congreso</strong><div class="small">Papeleta blanca</div></div><div><div class="l"></div><div class="l x"></div><div class="l"></div></div><div class="small">Eliges una lista cerrada de un partido.</div></div>
-    <div class="ballot s"><div><strong>Senado</strong><div class="small" style="color:#6b5f45">Papeleta sepia</div></div><div><div class="bx"><i>✕</i>Candidato A</div><div class="bx"><i></i>Candidato B</div><div class="bx"><i>✕</i>Candidato C</div></div><div class="small" style="color:#6b5f45">Marcas nombres con una cruz.</div></div>
-  </div>
-  <div class="block"><p><strong>El Senado funciona distinto.</strong> En Barcelona se eligen 4 senadores y puedes marcar hasta 3 nombres, aunque sean de partidos diferentes.</p></div>
 
   <h2>Voto por correo</h2>
-  <div class="block">
-    <p>El plazo para pedirlo terminó el 19 de noviembre. Si lo pediste, puedes enviar tu voto certificado desde cualquier oficina de Correos <strong>hasta el 26 de noviembre</strong> (la Junta Electoral Central amplió el plazo). Si lo pediste, ya no puedes votar en persona el domingo.</p>
-  </div>
+  <p>El plazo para pedirlo terminó el 19 de noviembre. Si lo pediste, puedes enviar el voto certificado desde cualquier oficina de Correos <b>hasta el 26 de noviembre</b> (la Junta Electoral Central amplió el plazo). Si lo pediste, ya no puedes votar en persona el domingo.</p>
 
-  <h2>En Barcelona</h2>
-  <div class="block">
-    <p>Barcelona elige 32 de los 48 diputados de Cataluña (Girona 6, Tarragona 6, Lleida 4). Estos son los cabezas de lista:</p>
-    <ul class="heads" id="heads"></ul>
-  </div>
+  <h2>Quién encabeza cada lista en Barcelona</h2>
+  <ul class="heads" id="heads"></ul>
 
   <h2>Después del domingo</h2>
-  <div class="block">
-    <p>Desde las 20:00 el Ministerio del Interior publica el recuento provisional. Las Juntas Electorales Provinciales hacen el escrutinio oficial del 4 al 7 de diciembre. Después, el Rey consulta a los partidos y propone un candidato a la investidura.</p>
-  </div>
+  <p>Desde las 20:00 el Ministerio del Interior publica el recuento provisional. Las Juntas Electorales Provinciales hacen el escrutinio oficial del 4 al 7 de diciembre. Después, el Rey consulta a los partidos y propone un candidato a la investidura.</p>
 
   <h2>Sobre esta app</h2>
-  <div class="block">
-    <p>Resume de forma neutral lo que dicen los programas, las encuestas y las fuentes oficiales. No recomienda votar a nadie. Los partidos aparecen por orden de escaños en 2023 y, para comparar temas, se usan las mismas preguntas para todos.</p>
-    <p class="small">Cuando un resumen de programa no recoge una postura, se indica «sin dato» en lugar de suponerla.</p>
-  </div>
+  <p>Resume de forma neutral lo que dicen los programas, las encuestas y las fuentes oficiales. No recomienda votar a nadie. Los partidos aparecen por orden de escaños en 2023 y, para comparar temas, se hacen las mismas preguntas a todos. Cuando un resumen de programa no recoge una postura, pone «sin dato» en lugar de suponerla.</p>
 
   <h2>Fuentes</h2>
   <ul class="links" id="sources"></ul>
@@ -456,15 +242,14 @@ nav.tabs button[aria-current=page]{color:var(--ink)}
 </section>
 </main>
 
-<!-- Party sheet -->
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-name"></div>
 
 <nav class="tabs" aria-label="Secciones">
   <button data-go="inicio" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18a9 9 0 0 1 18 0"/><path d="M7.5 18a4.5 4.5 0 0 1 9 0"/><path d="M2 18h20"/></svg>Inicio</button>
-  <button data-go="partidos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="7" height="7" rx="2"/><rect x="14" y="4" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>Partidos</button>
-  <button data-go="encuestas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V11M10 20V5M16 20v-7M22 20H2"/></svg>Encuestas</button>
-  <button data-go="temas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Temas</button>
-  <button data-go="votar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h16v9H4z"/><path d="M9 11V4h6v7"/><path d="M8 15h8"/></svg>Votar</button>
+  <button data-go="partidos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Partidos</button>
+  <button data-go="encuestas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20V11M11 20V5M17 20v-7M2 20h20"/></svg>Encuestas</button>
+  <button data-go="temas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h7l2 2h9v11H3z"/></svg>Temas</button>
+  <button data-go="voto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="M10 7.5l1.5 1.5L14 6"/></svg>Tu voto</button>
 </nav>
 
 <script src="data.js"></script>

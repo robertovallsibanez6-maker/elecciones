@@ -1,6 +1,6 @@
 // Cambia VERSION al actualizar datos para que los móviles descarguen la nueva versión.
-const VERSION = "29n-v1";
-const SHELL = ["./", "index.html", "app.js", "data.js", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"];
+const VERSION = "29n-v2";
+const SHELL = ["./", "index.html", "style.css", "app.js", "data.js", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "fonts/anybody.woff2", "fonts/public-sans.woff2"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
