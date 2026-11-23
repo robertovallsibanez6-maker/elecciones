@@ -1,7 +1,7 @@
 // Datos de la app. Última actualización: 22 de noviembre de 2026.
 // Desde el 24-nov está prohibido publicar encuestas en España (LOREG), así que estas son las últimas.
 window.DATA = {
-  updated: "22 de noviembre de 2026",
+  updated: "23 de noviembre de 2026",
   electionDate: "2026-11-29T09:00:00+01:00",
 
   // Orden de los partidos: por escaños obtenidos en 2023 (criterio neutral).
@@ -34,7 +34,7 @@ window.DATA = {
       sources: [["Resumen del programa (Política Electoral)", "https://www.politicaelectoral.com/es/espana/generales-2026/nacional/pp"], ["Programa por temas (Tu Papeleta)", "https://tupapeleta.es/programa-electoral/pp/"]]
     },
     {
-      id: "psoe", name: "PSOE", full: "Partido Socialista Obrero Español (PSC en Cataluña)", color: "#E30613", ink: "#fff",
+      id: "psoe", easyRead: { url: "https://lafuerzadelagente.es/programa/programa-psoe-lectura-facil.pdf", lang: "En castellano", who: "Publicado por el PSOE en su web de campaña (lafuerzadelagente.es)" }, name: "PSOE", full: "Partido Socialista Obrero Español (PSC en Cataluña)", color: "#E30613", ink: "#fff",
       leader: "Pedro Sánchez", leaderRole: "Presidente del Gobierno · candidato a la reelección",
       bcn: "Jordi Hereu (PSC)", motto: "La fuerza de seguir avanzando",
       ideology: "Centroizquierda. Socialdemócrata",
@@ -116,7 +116,7 @@ window.DATA = {
       sources: [["Programa explicado (Demócrata)", "https://www.democrata.es/elecciones-generales-espana/frente-amplio-programa-electoral-reforma-fiscal-servicios-publicos-vivienda/"]]
     },
     {
-      id: "erc", name: "ERC", full: "Esquerra Republicana de Catalunya", color: "#F5A800", ink: "#15192A",
+      id: "erc", easyRead: { url: "pdf/erc-programa-29n-lectura-facil.pdf", lang: "En catalán, 11 páginas", who: "Versión oficial de ERC adaptada a lectura fácil" }, name: "ERC", full: "Esquerra Republicana de Catalunya", color: "#F5A800", ink: "#15192A",
       leader: "Gabriel Rufián", leaderRole: "Cabeza de lista por Barcelona",
       bcn: "Gabriel Rufián (Oriol Junqueras, nº 31)", motto: "Defender Cataluña, mejorar la vida, reforzar lo público (sus tres ejes)",
       ideology: "Izquierda. Independentista catalana",

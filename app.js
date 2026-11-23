@@ -145,6 +145,11 @@
         </div>
         ${p.seatsNote ? `<p class="small">${esc(p.seatsNote)}</p>` : ""}
         <p class="ideo">${esc(p.ideology)}</p>
+        ${p.easyRead ? `<a class="lf" href="${p.easyRead.url}" target="_blank" rel="noopener">
+            <span class="lf-doc" aria-hidden="true"><b>LF</b></span>
+            <span class="lf-txt"><strong>Programa en lectura fácil</strong><small>${esc(p.easyRead.lang)}. ${esc(p.easyRead.who)}.</small></span>
+            <span class="lf-pdf">PDF</span>
+          </a>` : `<p class="lf-none">No hemos encontrado una versión oficial de su programa en lectura fácil (comprobado el 23 de noviembre).</p>`}
         <h2>Quiénes son</h2>${p.intro.map(t => `<p>${esc(t)}</p>`).join("")}
         <h2>Sus propuestas clave</h2>
         <ul class="props">${p.proposals.map(([t, d]) => `<li><strong>${esc(t)}</strong><span>${esc(d)}</span></li>`).join("")}</ul>
