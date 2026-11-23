@@ -373,4 +373,3 @@ nav.tabs button[aria-current=page]::after{content:"";position:absolute;top:-7px;
 .lf-txt strong{font-family:var(--display);font-variation-settings:"wdth" 110;font-weight:800;font-size:17px}
 .lf-txt small{font-size:13px;color:var(--tinta-2);margin-top:3px}
 .lf-pdf{flex:none;font-weight:800;font-size:12px;padding:4px 7px;border:2px solid var(--tinta);border-radius:3px;transform:rotate(-4deg)}
-.lf-none{margin:18px 0 0;font-size:14px;color:var(--tinta-3);padding-left:12px;border-left:3px dotted var(--raya)}
