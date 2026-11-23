@@ -25,6 +25,11 @@
 <main>
 <!-- INICIO -->
 <section class="screen on" id="s-inicio" aria-label="Inicio">
+  <div class="novedad" id="novedad" hidden>
+    <span class="sello nov-sello">nuevo</span>
+    <p><b>Discapacidad:</b> qué cambia con la ley y qué propone cada partido en educación, empleo, vida independiente y más.</p>
+    <div class="nov-act"><button class="nov-go" data-open-topic="discapacidad">Ver en Temas</button><button class="nov-x" aria-label="Cerrar aviso">✕</button></div>
+  </div>
   <div class="count" id="count">
     <div class="palotes" id="palotes" aria-hidden="true"></div>
     <div class="count-t" id="count-t">quedan <b>7 días</b> para votar, el domingo 29 de noviembre</div>
@@ -140,7 +145,7 @@
 <!-- TEMAS -->
 <section class="screen" id="s-temas" aria-label="Temas">
   <h1>Qué opina cada uno</h1>
-  <p class="lede">Siete temas clave y la postura de cada partido, según sus programas.</p>
+  <p class="lede">Los temas clave y la postura de cada partido, según sus programas. Al final, un apartado sobre discapacidad.</p>
   <div class="switch" role="group" aria-label="Modo">
     <button aria-pressed="true" data-tm="temas">Por tema</button>
     <button aria-pressed="false" data-tm="cmp">Comparar dos</button>
@@ -224,6 +229,8 @@
     <li><b>Vota en la mesa</b>Entrega el documento, espera a que comprueben que estás en la lista y deposita cada sobre en su urna.</li>
   </ol>
 
+  <div class="note" style="margin-top:18px"><b>Si tienes una discapacidad:</b> puedes votar acompañado de una persona de confianza y la mesa debe admitir tu voto. Todo lo que debes saber, y qué propone cada partido, en <button class="inline-link" data-open-topic="discapacidad">Temas › Discapacidad</button>.</div>
+
   <h2>Voto por correo</h2>
   <p>El plazo para pedirlo terminó el 19 de noviembre. Si lo pediste, puedes enviar el voto certificado desde cualquier oficina de Correos <b>hasta el 26 de noviembre</b> (la Junta Electoral Central amplió el plazo). Si lo pediste, ya no puedes votar en persona el domingo.</p>
 
@@ -253,6 +260,7 @@
 </nav>
 
 <script src="data.js"></script>
+<script src="discapacidad.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

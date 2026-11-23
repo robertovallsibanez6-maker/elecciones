@@ -262,8 +262,40 @@
   /* ---------- Temas ---------- */
   const MK = { si: "Sí", no: "No", mix: "En parte", nd: "Sin dato" };
   let curTopic = D.topics[0].id;
-  $("#tchips").innerHTML = D.topics.map(t => `<button class="ftab" data-t="${t.id}" aria-pressed="${t.id === curTopic}">${esc(t.name)}</button>`).join("");
+  const DIS = window.DISCAPACIDAD;
+  $("#tchips").innerHTML = D.topics.map(t => `<button class="ftab" data-t="${t.id}" aria-pressed="${t.id === curTopic}">${esc(t.name)}</button>`).join("") +
+    (DIS ? `<button class="ftab" data-t="discapacidad" aria-pressed="false">Discapacidad</button>` : "");
+  const ORD = ["pp", "psoe", "vox", "fa", "iu", "erc", "junts", "podemos", "sector"];
+  const PL = { iu: ["IU (Frente Amplio)", "fa"], sector: ["Lo que pide el sector", null] };
+  function renderDisability() {
+    const who = id => PL[id] ? PL[id][0] : name(id);
+    const col = id => PL[id] ? (PL[id][1] ? color(PL[id][1]) : "#9AA1AE") : color(id);
+    $("#topic").innerHTML = `
+      <div class="dis">
+        ${DIS.intro.map(t => `<p class="why">${esc(t)}</p>`).join("")}
+        <div class="dis-stats">${DIS.stats.map(([n, l, s]) => `<div><b class="num">${esc(n)}</b><span>${esc(l)}</span><small>${esc(s)}</small></div>`).join("")}</div>
+        <div class="dis-law"><h3>${esc(DIS.reform.title)}</h3><p>${esc(DIS.reform.text)}</p><ul>${DIS.reform.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+        <div class="tq">Qué dice cada partido, ámbito por ámbito</div>
+        <p class="small" style="margin-top:2px">Toca un ámbito para desplegarlo.</p>
+        <div class="dis-areas">${DIS.areas.map(a => `
+          <details class="dis-area">
+            <summary><span class="da-n">${esc(a.name)}</span><span class="da-w">${esc(a.what)}</span></summary>
+            <div class="da-body">
+              <div class="da-ley"><h4>Ya es ley</h4><ul>${a.ley.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+              <h4>Qué proponen</h4>
+              <ul class="da-prop">${a.prop.slice().sort((x, y) => ORD.indexOf(x[0]) - ORD.indexOf(y[0])).map(([id, t]) => `<li style="--pc:${col(id)}"><strong>${esc(who(id))}</strong><p>${esc(t)}</p></li>`).join("")}</ul>
+              <p class="da-none">${esc(a.none)}</p>
+              <p class="da-src">Fuentes: ${esc(a.src)}</p>
+            </div>
+          </details>`).join("")}</div>
+        <div class="dis-vote" id="dis-vote"><h3>${esc(DIS.vote.title)}</h3>${DIS.vote.points.map(([t, x]) => `<div><strong>${esc(t)}</strong><p>${esc(x)}</p></div>`).join("")}</div>
+        <p class="note">${esc(DIS.method)}</p>
+        <h4 style="margin-top:18px">Fuentes</h4>
+        <ul class="links">${DIS.sources.map(([t, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join("")}</ul>
+      </div>`;
+  }
   function renderTopic() {
+    if (curTopic === "discapacidad") return renderDisability();
     const t = D.topics.find(x => x.id === curTopic);
     const isTxt = Object.values(t.answers).every(a => a[0] === "txt");
     $("#topic").innerHTML = `
@@ -283,6 +315,17 @@
     renderTopic();
   });
   renderTopic();
+  function openTopic(id) {
+    curTopic = id;
+    $$("[data-t]").forEach(x => x.setAttribute("aria-pressed", x.dataset.t === id));
+    $$("[data-tm]").forEach(x => x.setAttribute("aria-pressed", x.dataset.tm === "temas"));
+    $("#tm-temas").hidden = false; $("#tm-cmp").hidden = true;
+    renderTopic();
+    go("temas");
+    const tab = document.querySelector(`[data-t="${id}"]`);
+    if (tab) tab.scrollIntoView({ inline: "center", block: "nearest" });
+  }
+  document.addEventListener("click", e => { const b = e.target.closest("[data-open-topic]"); if (b) openTopic(b.dataset.openTopic); });
 
   const opts = D.parties.map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join("");
   $("#cmpA").innerHTML = opts; $("#cmpB").innerHTML = opts;
@@ -378,6 +421,19 @@
   ];
   $("#sources").innerHTML = sources.map(([t, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join("");
 
+  /* ---------- Aviso de novedad ---------- */
+  const NEWS_KEY = "29n-novedad-discapacidad";
+  let seen = false;
+  try { seen = localStorage.getItem(NEWS_KEY) === "1"; } catch (e) {}
+  const banner = $("#novedad");
+  if (banner && !seen) banner.hidden = false;
+  if (banner) banner.addEventListener("click", e => {
+    if (e.target.closest("[data-open-topic], .nov-x")) {
+      banner.hidden = true;
+      try { localStorage.setItem(NEWS_KEY, "1"); } catch (err) {}
+    }
+  });
+
   /* ---------- Navigation ---------- */
   const screens = ["inicio", "partidos", "encuestas", "temas", "voto"];
   let current = "inicio";
@@ -399,6 +455,7 @@
   });
   const h0 = location.hash.slice(1);
   if (h0.startsWith("partido-")) { go("partidos", false); history.replaceState({ screen: "partidos" }, "", "#partidos"); openParty(h0.slice(8)); }
+  else if (h0 === "temas-discapacidad") { go("inicio", false); history.replaceState({ screen: "inicio" }, "", "#inicio"); openTopic("discapacidad"); }
   else { go(h0 || "inicio", false); history.replaceState({ screen: current }, "", "#" + current); }
 
   const top = $("#top");
